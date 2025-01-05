@@ -14,7 +14,7 @@ This repository contains code for initializing a chatbot using a pre-trained lan
 
 ## Prerequisites
 
-Before running the chatbot code, ensure that you have the following installed:
+Before running the chatbot code, ensure that you have the following installed
 
 - **Python 3.x**
 - **PyTorch** (with CUDA support if you want to use GPU)
