@@ -56,24 +56,34 @@ def initialize_chatbot(model_name="gpt2"):
     """
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(model_name)
+    # Add a pad token if needed
+    tokenizer.pad_token = tokenizer.eos_token
     return pipeline("text-generation", model=model, tokenizer=tokenizer)
 
+# Chatbot query handling
 # Chatbot query handling
 def chatbot_query(chatbot, context, user_query):
     """
     Handle a user query using the chatbot.
-    
+
     Args:
         chatbot (pipeline): The initialized chatbot pipeline.
         context (str): Context for the chatbot.
         user_query (str): User's query string.
-        
+
     Returns:
         str: Chatbot response.
     """
     input_text = f"Context: {context}\nUser Query: {user_query}\nAnswer:"
-    response = chatbot(input_text, max_length=300, num_return_sequences=1)[0]['generated_text']
-    return response.split("Answer:")[-1].strip()
+    response = chatbot(
+        input_text,
+        max_new_tokens=3000,  
+        num_return_sequences=1,
+        truncation=True,
+        pad_token_id=chatbot.tokenizer.eos_token_id
+    )
+    return response[0]['generated_text'].split("Answer:")[-1].strip()
+
 
 # Main function
 if __name__ == "__main__":

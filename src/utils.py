@@ -1,6 +1,6 @@
 import yaml
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+
 
 def read_parameters(file_path):
     """
@@ -35,17 +35,3 @@ def extract_coefficients(model_results):
     
     return coeff_df
 
-def label_encode_category(df, column_name='product_category_name'):
-    """
-    Label encodes the categorical product category column into numeric values.
-
-    Parameters:
-    df (pandas.DataFrame): The input dataframe.
-    column_name (str): The column to label encode (default is 'product_category_name').
-
-    Returns:
-    pandas.DataFrame: The dataframe with the label encoded column.
-    """
-    le = LabelEncoder()
-    df[column_name + '_encoded'] = le.fit_transform(df[column_name])
-    return df
