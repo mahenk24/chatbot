@@ -1,88 +1,66 @@
-# Price Optimization and Elasticity Modeling
+# Chatbot Initialization with Optimized Models
 
 ## Overview
 
-This repository contains a set of functions and tools for **price optimization** and **price elasticity modeling**. The primary objective is to build econometric models to understand the relationship between price and quantity sold, considering factors such as product category and external parameters. This repository uses **Python** for data manipulation, analysis, and optimization, and includes **Jupyter Notebooks** for easy experimentation and visualization.
+This repository contains code for initializing a chatbot using a pre-trained language model, specifically targeting optimized models like GPT-J or GPT-Neo for faster performance compared to GPT-2. The chatbot is designed to be easily initialized, with the ability to switch models and optimize performance through GPU acceleration, quantization, and batching.
 
-The key functionality includes:
-- Price elasticity estimation.
-- Price optimization for maximizing quantity sold.
-- Usage of **linear programming** for optimization.
-- Model parameters managed in a YAML configuration file.
+## Features
+
+- Initialize a chatbot using **GPT-2**, **GPT-Neo**, or **GPT-J** models.
+- Optionally load models onto **GPU** for faster inference if available.
+- **Optimized models** such as GPT-J offer better performance than GPT-2.
+- Supports **quantized models** for reduced size and faster performance.
+- Can be extended to handle **batching** for multiple requests.
+
+## Prerequisites
+
+Before running the chatbot code, ensure that you have the following installed:
+
+- **Python 3.x**
+- **PyTorch** (with CUDA support if you want to use GPU)
+- **Hugging Face Transformers library**
   
-## Key Components
+Install the necessary dependencies using `pip`:
 
-1. **`src/`**: This folder contains all source code for data processing, modeling, and utilities.
-   - **`exploratory.py`**: Functions for performing exploratory data analysis (EDA).
-   - **`econometric_model.py`**: Functions to develop econometric models for price elasticity.
-   - **`optimization.py`**: Functions to implement linear programming for price optimization.
+```bash
+pip install torch transformers
 
-2. **`conf/`**: Contains configuration files, including parameter settings for modeling and optimization.
-   - **`parameters.yaml`**: YAML file to store the parameters like price change range, product categories, and others.
+```
+Ensure that CUDA is installed if you are planning to run the code on a GPU. You can check CUDA availability by running:
 
-3. **`notebooks/`**: Jupyter Notebooks for interactive analysis, modeling, and optimization.
-   - **`modeling.ipynb`**: The notebook for building and analyzing the price elasticity model.
-   - **`optimize.ipynb`**: The notebook to run optimization for price adjustments based on the elasticity model.
+```bash
+import torch
+print(torch.cuda.is_available())
+```
 
-4. **`data/`**: Folder to store raw and processed data. (Typically `.csv`, `.xlsx`, or other formats)
-   - **`raw/`**: Raw input data files.
-   - **`processed/`**: Cleaned and preprocessed data files ready for modeling.
+## Installation
+1. Clone this repository to your local machine:
 
-5. **`requirements.txt`**: Lists all required Python dependencies for the project.
+```bash
+   git clone https://github.com/your-repository/chatbot-initialization.git
+   cd chatbot-initialization
+```
+2. Install the dependencies:
+```bash
+   pip install -r requirements.txt
+```
+## Optimizing Performance
 
-## Setup and Installation
+- **GPU**: If you have access to a GPU, make sure to utilize it to speed up model inference.
+- **Model Switching**: GPT-J or GPT-Neo provide faster results than GPT-2 without a significant sacrifice in quality.
+- **Quantization**: Use quantized models for reduced size and improved performance, especially when running on limited resources.
 
-### Prerequisites
-- Python 3.7+
-- Git
-- Virtual environment tool (e.g., `venv` or `conda`)
+## Contributing
 
-### Steps to Set Up the Project
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/price-optimization.git
-   cd price-optimization    
-   ```
-
-2. Create a virtual environment (optional but recommended):    
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
-3. Install required dependencies:    
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-## File Structure
-
-    price-optimization/
-    │
-    ├── src/
-    │   ├── exploratory.py
-    │   ├── econometric_model.py
-    │   └── optimization.py
-    │
-    ├── conf/
-    │   └── parameters.yaml
-    │
-    ├── notebooks/
-    │   ├── modeling.ipynb
-    │   └── optimize.ipynb
-    │
-    ├── data/
-    │   ├── raw/
-    │   └── processed/
-    │
-    ├── requirements.txt
-    └── README.md
-
-## Contribution
-Feel free to fork this repository and contribute! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
+If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your changes. For bug reports or feature requests, please open an issue.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Acknowledgements
+
+- **Hugging Face** for providing pre-trained language models.
+- **EleutherAI** for developing GPT-Neo and GPT-J models.
+- **PyTorch** for deep learning framework support.
 
